@@ -1,0 +1,172 @@
+{% load staticfiles %}
+ <!DOCTYPE html>
+ <html>
+ <head>
+ <style type="text/css">
+ .main_body {
+ 	background-color: #F3F3F3;
+ }
+ .container {
+ 	width:1100px;
+ 	margin-right: auto;
+	margin-left: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+ }
+ .tittle_div {
+ 	background-color: #F3F3F3;
+ 	/*margin: 0px;*/
+ 	padding: 40px;
+ }
+ .{
+ 	height: auto;
+ 	border-radius: 0px !important;
+	z-index: 10000;
+	font-family: 'Raleway',sans-serif;
+	margin-top: 0;
+	color: #ffffff;
+	font-size: 13px;
+	font-weight: 800;
+	text-transform: uppercase;
+	border: 1px solid #ed6b4b;
+	/*background-color: #ed6b4b;*/
+	margin-bottom: 20px !important;
+ }
+ .navigation li{
+ 	color: white;
+ }
+.navigation {
+	background-color:#ed6b4b;
+	height:auto;
+	margin-top: 40px;
+	margin-bottom: 25px;
+}
+.row{
+	background-color: white;
+}
+.bottom {
+	background-color: #E4E2D6;
+	color:#777777;
+}
+
+ </style>
+
+
+
+ 		<link rel="stylesheet" type="text/css" href="{% static "blog3/style.css" %}" />
+ 		<meta name="viewport" content="width=device-width, initial-scale=1">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  		 <script src="http://code.angularjs.org/1.2.6/angular.js"></script> 
+    	<script src="{% static "js/app.js"%}"></script>
+    	 <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+   		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+   		 
+</head>
+<body>
+	<div class="main_body">
+		<div class="container">
+
+			<div class="tittle_div">
+				<div class="tittle">
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 head-col">
+						<h1 style="color:#ed6b4b"><strong>My Blog</strong></h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">	
+			<div class ="navigation">                
+      			<ul class="nav nav-pills" role="tablist">
+        			<li class="active"><a><span class="glyphicon glyphicon-home">HOME</span></a> </li>
+        			<li><a><span class="glyphicon glyphicon-user">LOGIN</span></a></li>
+       				<li><a><span class="glyphicon glyphicon-align-justify">ABOUT</span></a></li>
+        			<li><a><span class="glyphicon glyphicon-envelope">CONTACT US</span></a></li>     
+      			</ul>
+			</div>
+    	</div>
+    	<div class="container">
+    		<div class="content">
+    			<div class="row">
+    				<div class="col-md-7" style="background-color:white;height:auto">
+    				{% for post in posts %}
+    				{% if name.username == post.user %}
+    					<h2>{{post.tittle}} <a href="edit">edit</a><h2>
+    					<h5>Posted By {{post.user}} | date:{{post.created}}</h5>
+    					<pre>{{post.content}}</pre>
+    					{% else%}
+    						<h2 id="{{post.id}}"> <strong>{{post.tittle}}</strong></h2>
+    						<h6><span class="glyphicon glyphicon-user">{{post.user}} | <span class="glyphicon glyphicon-time">{{post.created}}</span></span></h6>
+    						<pre>{{post.content}}</pre>
+    					{% endif%}
+    					<button type="button" class="btn btn-warning" style="float:right;background-color:#ed6b4b"><span class="glyphicon glyphicon-link">Read More</button>
+    				{% endfor %}
+
+    				</div>	
+
+    			
+    			<div class="col-md-4 col-md-offset-1" style="background-color:white;height:auto">
+    		
+    				<h2>Rescent Posts</h2>
+    				<ul>
+    					{% for post in posts %}
+    					<li><h5><a href="#{{post.id}}">{{post.tittle}}</h5></li>
+
+    					{% endfor %}
+    				</div>
+    			
+				</div>
+
+    		</div>
+
+
+    	</div>
+    	<div class="container">
+    		<div class="bottom">
+    		<h3>Rescent Post</h3>
+
+    			{% for post in posts %}
+    			<h5><a href="#{{post.id}}">{{post.tittle}}</h5>
+    			{% endfor %}
+    		</div>
+
+    	</div>
+
+	
+	
+	
+	<!-- <a href="/login"><input class="btn btn-primary" type="button" value="Login" ></a>
+	<a href="/logout"><input class="btn btn-primary" type="button" value="Logout" ></a>
+
+	
+	<div class="container">
+		{% if posts %}
+		{% for post in posts %}
+		<ul style="list-style-type:hfghkdfgh
+			{% if name.username == post.user %}
+			<h5>Posted By {{post.user}} | date:{{post.created}}</h5>
+ 			<li><h1><u>{{post.tittle}} <a href="edit">edit</a></u><h1></li>
+ 			<div class="inner">
+ 				<pre>{{post.content}}</pre>
+ 				
+ 				</div>
+			{% else %}
+			<p>Posted By {{post.user}} | date:{{post.created}}</p>
+			<li><h1><u>{{post.tittle}}</u></h1></li>
+			<div class="inner"> 
+ 				<pre>{{post.content}}</pre>
+ 				
+ 			</div>
+		</ul>
+		{% endif %}
+		 {% endfor %}
+		 {% else %}
+   			 <p>No post  are available.</p>
+		{% endif %}
+
+	</div>
+</div> -->
+</body>
+</html>

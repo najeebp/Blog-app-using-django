@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
+    <style>
+      body  { padding-top:30px; }
+    </style>
+    <script src="http://code.angularjs.org/1.2.6/angular.js"></script> 
+    <script src="{% static "js/app.js"%}"></script>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+</head>
+<body >
+<div class="container">
+<div class="col-sm-8 col-sm-offset-2">
+    <div class="page-header"><h1>Login</h1></div>
+    <form action='/login' id="register-form" method="POST" name="userForm"> 
+    {% csrf_token %}
+      <!--   <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="user" class="form-control" >
+        </div>
+         <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="pass" class="form-control" ng-model="password" required>
+        </div> -->
+      {{form.as_p}}
+      <p>{{error}}</p>
+        <input class="btn btn-primary" id="login_button" type="submit" value="Login" />
+       <a href="/signup"><input class="btn btn-primary" type="button" value="SignUp" /></a>
+
+       <!--  <a href="view"><input class="btn btn-primary" type="button" value="View" /></a> -->
+    </form> 
+           <a class="login-link" href="password_reset">Lost your password?</a>
+    
+    
+</div>
+</div>
+</body>
+</html>

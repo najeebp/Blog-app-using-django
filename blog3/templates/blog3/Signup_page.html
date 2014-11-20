@@ -1,0 +1,53 @@
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
+    <style>
+      body  { padding-top:30px; }
+    </style>
+    <script src="http://code.angularjs.org/1.2.6/angular.js"></script> 
+    <script src="{% static "js/app.js"%}"></script>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+</head>
+<body >
+<div class="container">
+<div class="col-sm-8 col-sm-offset-2">
+    <div class="page-header"><h1>User Registration Form</h1></div>
+    <form action='/signup/done' method="POST"> {% csrf_token %}
+       <!--  <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control">
+        </div>
+         <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" ng-model="password" required>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" ng-model="email">
+        </div>
+
+        <div class="form-group">
+            <label>First name</label>
+            <input type="text" name="firstname" class="form-control">
+        </div>
+         <div class="form-group">
+            <label>Last name</label>
+            <input type="text" name="lastname" class="form-control">
+        </div>
+         <div class="form-group">
+            <label>City</label>
+            <input type="text" name="city" class="form-control">
+        </div> -->
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Done</button>
+       <!--  <a href="/done"><input class="btn btn-primary" type="button" value="Done" /></a> -->
+        
+    </form> 
+</div>
+</div>
+</body>
+</html>
